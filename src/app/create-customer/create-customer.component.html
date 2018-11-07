@@ -1,0 +1,134 @@
+<div class="myPanel">
+  <div class="heading">
+    User Information
+    <input type="text" disabled class="form-control" id="id" required [(ngModel)]="customer.id" name="id">
+    <label>DOB: </label> {{customer.dob | date: 'medium' :'MST'}}
+
+  </div>
+  <div>
+    <form (ngSubmit)="onSubmit()">
+  
+      <div class="body">
+          <div class="container">
+              <div class="row">
+                      <div class="col-sm-4 col-xs-12">
+                          <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                <label for="firstname">First Name</label>
+                                <input type="text" class="form-control" id="firstname" required [(ngModel)]="customer.firstname" name="firstname">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-4 col-xs-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                              <label for="middleinitial">Middle Initial</label>
+                              <input type="text" class="form-control" id="middleinitial" required [(ngModel)]="customer.middleinitial" name="middleinitial">
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 col-xs-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                              <label for="lastname">Last Name</label>
+                              <input type="text" class="form-control" id="lastname" required [(ngModel)]="customer.lastname" name="lastname">
+                            </div>
+                        </div>
+                    </div>
+                      <div class="col-sm-4 col-xs-12">
+                          <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                <label for="dob">DOB</label>
+                                <input type="date" class="form-control" id="dob" required [(ngModel)]="customer.dob" name="dob">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-4 col-xs-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                              <label for="gender">Gender</label>
+                              <select class="form-control" id="gender" required [(ngModel)]="customer.gender" name="gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>X</option>
+                                <option></option>
+                              </select>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 col-xs-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                              <label for="handdominance">Hand Dominance</label>
+                              <select class="form-control" id="handdominance" required [(ngModel)]="customer.handdominance" name="handdominance">
+                                <option>Right</option>
+                                <option>Left</option>
+                                <option></option>
+                              </select>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div  class="col-sm-4 col-xs-12">
+                        <div class="panel panel-primary">
+                          <div class="panel-heading">
+                          <button type="submit" class="btn btn-success">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+      </div>
+    </form>
+  </div>    
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <div>
+    <div *ngIf="_customer">
+        <div class="myPanel">
+           <div class="heading">
+             User Information
+           </div>
+         
+           <div >
+               <div >
+                 <div>
+                   <label>Last Name: </label> {{_customer.lastname}}
+                 </div>
+                 <div>
+                   <label>First Name: </label> {{_customer.firstname}}
+                 </div>
+                 <div>
+                   <label>Middle Initial: </label> {{_customer.middleinitial}}
+                 </div>
+                 <div>
+                   <label>DOB: </label> {{_customer.dob}}
+                 </div>
+                 <div>
+                   <label>Gender: </label> {{_customer.gender}}
+                 </div>
+                 <div>
+                   <label>Hand Dominance: </label> {{_customer.handdominance}}
+                 </div>
+                 <div>
+                   <label>Active: </label> {{_customer.active}}
+                 </div>
+               
+                 <span class="button is-small btn-primary" *ngIf='_customer.active' (click)='updateActive(false)'> Inactive </span>
+               
+                 <span class="button is-small btn-primary" *ngIf='!_customer.active' (click)='updateActive(true)'>Active</span>
+               
+                 <span class="button is-small btn-success" (click)='editCustomer()'>Edit</span>
+    
+                 <span class="button is-small btn-danger" (click)='deleteCustomer()'>Delete</span>
+    
+               </div>
+           </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+

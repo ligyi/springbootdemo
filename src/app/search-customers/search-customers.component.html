@@ -1,0 +1,79 @@
+<h3>Find By Gender</h3>
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select class="form-control" id="gender" required [(ngModel)]="gender" name="gender">
+          <option>Male</option>
+          <option>Female</option>
+          <option>X</option>
+          <option></option>
+        </select>
+    </div>
+ 
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
+
+<div>
+    <div class="row"> 
+        <div *ngFor="let customer of customers">
+          <customer-details [customer]='customer'></customer-details>
+        </div>
+      </div>
+       
+<!--
+    <div class="row"> 
+         <div *ngFor="let customer of customers">
+            <div *ngIf="customer">
+                <div class="myPanel">
+                   <div class="heading">
+                     User Information
+                   </div>
+                 
+                   <div >
+                       <div >
+             
+                         <div>
+                           <label>Last Name: </label> {{customer.lastname}}
+                         </div>
+                         <div>
+                           <label>First Name: </label> {{customer.firstname}}
+                         </div>
+                         <div>
+                           <label>Middle Initial: </label> {{customer.middleinitial}}
+                         </div>
+                         <div>
+                           <label>DOB: </label> {{customer.dob}}
+                         </div>
+                         <div>
+                           <label>Gender: </label> {{customer.gender}}
+                         </div>
+                         <div>
+                           <label>Hand Dominance: </label> {{customer.handdominance}}
+                         </div>
+                         <div>
+                           <label>Active: </label> {{customer.active}}
+                         </div>
+                       
+                         <span class="button is-small btn-primary" *ngIf='customer.active' (click)='updateActive(false,customer)'>Inactive </span>
+                       
+                         <span class="button is-small btn-primary" *ngIf='!customer.active' (click)='updateActive(true,customer)'>Active</span>
+                       
+                         <a routerLink="/add" class="button is-small btn-success" role="button" routerLinkActive="active">Edit</a>
+
+            
+                         <span class="button is-small btn-danger" (click)='deleteCustomer(customer.id)'>Delete</span>
+            
+                       </div>
+                </div>
+             </div>
+           </div>
+       </div>
+    </div>
+
+  -->
+</div>
+
